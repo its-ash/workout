@@ -2,15 +2,7 @@
     <main class="app-shell">
         <header class="topbar glass">
             <div class="brand-left">
-                <div class="geo-logo" aria-hidden="true">
-                    <span class="dot"></span>
-                    <span class="square"></span>
-                    <span class="tri"></span>
-                </div>
-                <div>
-                    <p class="kicker">Workout Planner</p>
-                    <h1>Daily Split Tracker</h1>
-                </div>
+                <h1>Daily Split Tracker</h1>
             </div>
             <button v-if="canInstall" class="install-btn install-top-right" @click="installApp">
                 Install App
