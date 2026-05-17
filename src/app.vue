@@ -66,7 +66,7 @@
 </template>
 
 <script setup lang="ts">
-import { computed, onMounted, reactive, unref, watch } from "vue";
+import { computed, onMounted, reactive, ref, unref, watch } from "vue";
 
 type SplitDay = { day: number; workout: string[] };
 type SplitProgram = { id: string; title: string; days: SplitDay[] };
@@ -282,12 +282,30 @@ const pwa = usePWA() as unknown as {
     isPWAInstalled?: unknown;
     install?: () => Promise<unknown>;
 };
+const standaloneMode = ref(false);
+
+const updateStandaloneMode = () => {
+    if (!import.meta.client) {
+        standaloneMode.value = false;
+        return;
+    }
+    standaloneMode.value =
+        window.matchMedia("(display-mode: standalone)").matches ||
+        // iOS Safari standalone flag.
+        Boolean((window.navigator as Navigator & { standalone?: boolean }).standalone);
+};
 
 const canInstall = computed(() => {
     const showInstallPrompt = Boolean(unref(pwa?.showInstallPrompt));
     const installed =
         Boolean(unref(pwa?.isInstalled)) || Boolean(unref(pwa?.isPWAInstalled));
-    return import.meta.client && showInstallPrompt && !installed;
+    return (
+        import.meta.client &&
+        showInstallPrompt &&
+        typeof pwa.install === "function" &&
+        !installed &&
+        !standaloneMode.value
+    );
 });
 
 const installApp = async () => {
@@ -484,6 +502,9 @@ const saveSetup = () => {
 };
 
 onMounted(() => {
+    updateStandaloneMode();
+    window.addEventListener("appinstalled", updateStandaloneMode);
+
     const raw = localStorage.getItem(STORE_KEY);
     if (!raw) {
         return;
