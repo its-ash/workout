@@ -1,84 +1,56 @@
-<!--
-Get your module up and running quickly.
+# Workout PWA
 
-Find and replace all on all files (CMD+SHIFT+F):
-- Name: My Module
-- Package name: my-module
-- Description: My new Nuxt module
--->
-
-# My Module
-
-[![npm version][npm-version-src]][npm-version-href]
-[![npm downloads][npm-downloads-src]][npm-downloads-href]
-[![License][license-src]][license-href]
-[![Nuxt][nuxt-src]][nuxt-href]
-
-My new Nuxt module for doing amazing things.
-
-- [✨ &nbsp;Release Notes](/CHANGELOG.md)
-<!-- - [🏀 Online playground](https://stackblitz.com/github/your-org/my-module?file=playground%2Fapp.vue) -->
-<!-- - [📖 &nbsp;Documentation](https://example.com) -->
+A Nuxt 4 Progressive Web App for day-by-day workout tracking with a 4-day repeating cycle.
 
 ## Features
 
-<!-- Highlight some of the features your module provide here -->
-- ⛰ &nbsp;Foo
-- 🚠 &nbsp;Bar
-- 🌲 &nbsp;Baz
+- First-time setup flow for level and split selection.
+- Level-based programming logic for Beginner, Intermediate, and Advanced users.
+- 4-day fixed cycle that repeats after Day 4.
+- Complete-day progression with confirmation prompt.
+- Persistent local storage state for offline-style continuity.
+- PWA install support with in-app install button when available.
+- Static site generation ready (`npm run generate`).
 
-## Quick Setup
+## Screenshots
 
-Install the module to your Nuxt application with one command:
+### Setup Screen
+
+![Setup screen](docs/screenshots/setup-screen.png)
+
+### Workout Screen (Desktop)
+
+![Workout desktop](docs/screenshots/workout-screen.png)
+
+### Workout Screen (Mobile)
+
+![Workout mobile](docs/screenshots/workout-mobile.png)
+
+## Run Locally
 
 ```bash
-npx nuxt module add my-module
+npm install
+npm run dev
 ```
 
-That's it! You can now use My Module in your Nuxt app ✨
+Local app: `http://localhost:3000`
 
+## Build
 
-## Contribution
+```bash
+npm run build
+```
 
-<details>
-  <summary>Local development</summary>
-  
-  ```bash
-  # Install dependencies
-  npm install
-  
-  # Generate type stubs
-  npm run dev:prepare
-  
-  # Develop with the playground
-  npm run dev
-  
-  # Build the playground
-  npm run dev:build
-  
-  # Run ESLint
-  npm run lint
-  
-  # Run Vitest
-  npm run test
-  npm run test:watch
-  
-  # Release new version
-  npm run release
-  ```
+## Generate Static Output
 
-</details>
+```bash
+npm run generate
+```
 
+Generated output: `.output/public`
 
-<!-- Badges -->
-[npm-version-src]: https://img.shields.io/npm/v/my-module/latest.svg?style=flat&colorA=020420&colorB=00DC82
-[npm-version-href]: https://npmjs.com/package/my-module
+## Deploy
 
-[npm-downloads-src]: https://img.shields.io/npm/dm/my-module.svg?style=flat&colorA=020420&colorB=00DC82
-[npm-downloads-href]: https://npm.chart.dev/my-module
+GitHub Pages workflow is configured to deploy on push to `master` via:
 
-[license-src]: https://img.shields.io/npm/l/my-module.svg?style=flat&colorA=020420&colorB=00DC82
-[license-href]: https://npmjs.com/package/my-module
-
-[nuxt-src]: https://img.shields.io/badge/Nuxt-020420?logo=nuxt
-[nuxt-href]: https://nuxt.com
+- `.github/workflows/deploy-pages.yml`
