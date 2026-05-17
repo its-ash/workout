@@ -5,11 +5,12 @@ export default defineNuxtConfig({
   compatibilityDate: 'latest',
   css: ['~/assets/main.css'],
   app: {
+    baseURL: '/workout/',
     head: {
       link: [
-        { rel: 'icon', type: 'image/svg+xml', href: '/icon.svg' },
-        { rel: 'shortcut icon', href: '/icon.svg' },
-        { rel: 'apple-touch-icon', href: '/icon.svg' },
+        { rel: 'icon', type: 'image/svg+xml', href: 'icon.svg' },
+        { rel: 'shortcut icon', href: 'icon.svg' },
+        { rel: 'apple-touch-icon', href: 'icon.svg' },
       ],
     },
   },
@@ -29,16 +30,17 @@ export default defineNuxtConfig({
       theme_color: '#171e19',
       background_color: '#eeebe3',
       display: 'standalone',
-      start_url: '/',
+      start_url: '/workout/',
+      scope: '/workout/',
       icons: [
         {
-          src: '/icon.svg',
+          src: 'icon.svg',
           sizes: '192x192',
           type: 'image/svg+xml',
           purpose: 'any',
         },
         {
-          src: '/icon.svg',
+          src: 'icon.svg',
           sizes: '512x512',
           type: 'image/svg+xml',
           purpose: 'any maskable',
