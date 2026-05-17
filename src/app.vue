@@ -12,10 +12,10 @@
                     <h1>Daily Split Tracker</h1>
                 </div>
             </div>
+            <button v-if="canInstall" class="install-btn install-top-right" @click="installApp">
+                Install App
+            </button>
             <div class="header-actions">
-                <button v-if="canInstall" class="install-btn" @click="installApp">
-                    Install App
-                </button>
                 <div class="badge">{{ state.level }} · {{ activeSplit.title }}</div>
             </div>
         </header>

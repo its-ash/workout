@@ -56,12 +56,15 @@ body {
   position: sticky;
   top: 0;
   z-index: 40;
+  position: relative;
 }
 
 .header-actions {
   display: flex;
   align-items: center;
   gap: 0.55rem;
+  margin-left: auto;
+  padding-right: 7.8rem;
 }
 
 .install-btn {
@@ -72,6 +75,12 @@ body {
   padding: 0.48rem 0.72rem;
   font-size: 0.72rem;
   line-height: 1;
+}
+
+.install-top-right {
+  position: absolute;
+  top: 0.7rem;
+  right: 0.8rem;
 }
 
 .brand-left {
@@ -444,6 +453,11 @@ button:disabled {
     padding: 0.52rem 0.85rem;
   }
 
+  .install-top-right {
+    top: 0.95rem;
+    right: 1.4rem;
+  }
+
   h1 {
     font-size: clamp(2.2rem, 4vw, 4.6rem);
   }
@@ -482,16 +496,22 @@ button:disabled {
 @media (max-width: 760px) {
   .topbar {
     align-items: flex-start;
-    flex-direction: column;
+    flex-direction: row;
   }
 
   .header-actions {
-    width: 100%;
-    justify-content: space-between;
+    width: auto;
+    justify-content: flex-end;
+    padding-right: 7.2rem;
   }
 
   .badge {
     width: auto;
     text-align: center;
+  }
+
+  .install-top-right {
+    top: 0.65rem;
+    right: 0.7rem;
   }
 }
