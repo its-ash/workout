@@ -31,7 +31,7 @@
       </div>
     </section>
 
-    <div class="actions day-actions d-flex">
+    <div class="actions day-actions">
       <button
         v-if="canInstall"
         class="secondary"

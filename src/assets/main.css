@@ -384,6 +384,10 @@ select {
   pointer-events: auto;
 }
 
+.day-actions .secondary {
+  pointer-events: auto;
+}
+
 .update-toast {
   position: fixed;
   left: 1rem;
