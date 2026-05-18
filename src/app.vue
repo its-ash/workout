@@ -5,11 +5,11 @@
         <h1>Daily Split Tracker</h1>
       </div>
       <button
-        v-if="canInstall"
+        v-if="canInstall || canShowInstallHelp"
         class="install-btn install-top-right"
-        @click="installApp"
+        @click="handleInstallClick"
       >
-        Install App
+        {{ canInstall ? "Install App" : "How to Install" }}
       </button>
       <div class="header-actions">
         <div class="badge level-picker">
@@ -38,8 +38,12 @@
     </section>
 
     <div class="actions day-actions">
-      <button v-if="canInstall" class="secondary" @click="installApp">
-        Install App
+      <button
+        v-if="canInstall || canShowInstallHelp"
+        class="secondary"
+        @click="handleInstallClick"
+      >
+        {{ canInstall ? "Install App" : "How to Install" }}
       </button>
       <button class="primary" :disabled="isDoneToday" @click="completeDay">
         {{ isDoneToday ? "Completed" : "Complete Day" }}
@@ -51,6 +55,16 @@
       <div class="update-actions">
         <button class="secondary" @click="dismissUpdate">Later</button>
         <button class="primary" @click="applyUpdate">Update Now</button>
+      </div>
+    </section>
+
+    <section v-if="showInstallHelp" class="update-toast">
+      <p class="update-copy">Install on iPhone/iPad</p>
+      <div class="workout-note" style="margin-top: 0; border-top: 0; padding-top: 0">
+        Tap Share in Safari, then choose Add to Home Screen.
+      </div>
+      <div class="update-actions">
+        <button class="secondary" @click="showInstallHelp = false">Close</button>
       </div>
     </section>
   </main>
@@ -179,6 +193,8 @@ const pwa = usePWA() as unknown as {
 };
 const standaloneMode = ref(false);
 const dismissUpdateBanner = ref(false);
+const showInstallHelp = ref(false);
+const isIosSafari = ref(false);
 
 const updateStandaloneMode = () => {
   if (!import.meta.client) {
@@ -195,8 +211,7 @@ const updateStandaloneMode = () => {
 
 const canInstall = computed(() => {
   const showInstallPrompt = Boolean(unref(pwa?.showInstallPrompt));
-  const installed =
-    Boolean(unref(pwa?.isInstalled)) || Boolean(unref(pwa?.isPWAInstalled));
+  const installed = isInstalled.value;
   return (
     import.meta.client &&
     showInstallPrompt &&
@@ -206,11 +221,29 @@ const canInstall = computed(() => {
   );
 });
 
+const isInstalled = computed(
+  () => Boolean(unref(pwa?.isInstalled)) || Boolean(unref(pwa?.isPWAInstalled)),
+);
+
+const canShowInstallHelp = computed(
+  () => import.meta.client && isIosSafari.value && !standaloneMode.value && !isInstalled.value,
+);
+
 const installApp = async () => {
   if (!canInstall.value || !pwa.install) {
     return;
   }
   await pwa.install();
+};
+
+const handleInstallClick = async () => {
+  if (canInstall.value) {
+    await installApp();
+    return;
+  }
+  if (canShowInstallHelp.value) {
+    showInstallHelp.value = true;
+  }
 };
 
 const hasPendingUpdate = computed(() => Boolean(unref(pwa?.needRefresh)));
@@ -411,6 +444,8 @@ const completeDay = () => {
 onMounted(() => {
   updateStandaloneMode();
   window.addEventListener("appinstalled", updateStandaloneMode);
+  const ua = window.navigator.userAgent;
+  isIosSafari.value = /iPad|iPhone|iPod/.test(ua) && /Safari/.test(ua) && !/CriOS|FxiOS|EdgiOS/.test(ua);
 
   const raw = localStorage.getItem(STORE_KEY);
   if (!raw) {
