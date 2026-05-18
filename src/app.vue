@@ -1,3 +1,4 @@
+<!-- eslint-disable @stylistic/quotes -->
 <template>
   <main class="app-shell">
     <header class="topbar glass">
@@ -60,11 +61,16 @@
 
     <section v-if="showInstallHelp" class="update-toast">
       <p class="update-copy">Install on iPhone/iPad</p>
-      <div class="workout-note" style="margin-top: 0; border-top: 0; padding-top: 0">
+      <div
+        class="workout-note"
+        style="margin-top: 0; border-top: 0; padding-top: 0"
+      >
         Tap Share in Safari, then choose Add to Home Screen.
       </div>
       <div class="update-actions">
-        <button class="secondary" @click="showInstallHelp = false">Close</button>
+        <button class="secondary" @click="showInstallHelp = false">
+          Close
+        </button>
       </div>
     </section>
   </main>
@@ -90,72 +96,80 @@ const pushPullLegsSplit: SplitProgram = {
   id: "push-pull-legs",
   title: "Push / Pull / Legs",
   days: [
-      {
-        day: 1,
-        workout: [
-          "Barbell Bench Press - 4 sets x 6 reps, rest 150s",
-          "Incline Dumbbell Press - 4 sets x 8 reps, rest 120s",
-          "Standing Overhead Press - 3 sets x 8 reps, rest 120s",
-          "Cable Lateral Raise - 3 sets x 15 reps, rest 60s",
-          "Machine Chest Press - 3 sets x 10 reps, rest 90s",
-          "Overhead Cable Triceps Extension - 3 sets x 12 reps, rest 60s",
-        ],
-      },
-      {
-        day: 2,
-        workout: [
-          "Weighted Pull Up - 4 sets x 6 reps, rest 150s",
-          "Chest Supported Row - 4 sets x 8 reps, rest 120s",
-          "Neutral Grip Lat Pulldown - 3 sets x 10 reps, rest 90s",
-          "Single Arm Cable Row - 3 sets x 12 reps each side, rest 75s",
-          "Reverse Pec Deck - 3 sets x 15 reps, rest 60s",
-          "Incline Dumbbell Curl - 3 sets x 12 reps, rest 60s",
-        ],
-      },
-      {
-        day: 3,
-        workout: [
-          "High Bar Back Squat - 4 sets x 6 reps, rest 180s",
-          "Romanian Deadlift - 4 sets x 8 reps, rest 150s",
-          "Leg Press (Deep Range) - 3 sets x 12 reps, rest 120s",
-          "Seated Leg Curl - 3 sets x 12 reps, rest 90s",
-          "Leg Extension - 3 sets x 15 reps, rest 75s",
-          "Standing Calf Raise - 4 sets x 12 reps, rest 60s",
-        ],
-      },
-      {
-        day: 4,
-        workout: [
-          "Standing Overhead Press - 4 sets x 6 reps, rest 150s",
-          "Incline Barbell Press - 4 sets x 8 reps, rest 120s",
-          "Machine Chest Press - 3 sets x 10 reps, rest 90s",
-          "Cable Lateral Raise - 4 sets x 15 reps, rest 60s",
-          "Weighted Dips - 3 sets x 8 reps, rest 90s",
-          "Rope Triceps Pressdown - 3 sets x 12 reps, rest 60s",
-        ],
-      },
-      {
-        day: 5,
-        workout: [
-          "Neutral Grip Lat Pulldown - 4 sets x 8 reps, rest 120s",
-          "Barbell Row - 4 sets x 8 reps, rest 120s",
-          "Cable Pullover - 3 sets x 12 reps, rest 75s",
-          "Rear Delt Cable Fly - 3 sets x 15 reps, rest 60s",
-          "Hammer Curl - 3 sets x 10 reps, rest 60s",
-          "Preacher Curl - 3 sets x 12 reps, rest 60s",
-        ],
-      },
-      {
-        day: 6,
-        workout: [
-          "Front Squat - 4 sets x 6 reps, rest 180s",
-          "Barbell Hip Thrust - 4 sets x 8 reps, rest 120s",
-          "Bulgarian Split Squat - 3 sets x 10 reps each leg, rest 90s",
-          "Leg Extension - 3 sets x 15 reps, rest 75s",
-          "Seated Calf Raise - 4 sets x 15 reps, rest 60s",
-          "Core Finisher - 12 minutes (mountain climber, plank, hollow hold)",
-        ],
-      },
+    {
+      day: 1,
+      workout: [
+        "Barbell Bench Press - 4 sets x 6 reps, rest 150s",
+        "Incline Dumbbell Press - 4 sets x 8 reps, rest 120s",
+        "Standing Overhead Press - 3 sets x 8 reps, rest 120s",
+        "Cable Lateral Raise - 4 sets x 15 reps, rest 60s",
+        "Cable Upright Row - 3 sets x 12 reps, rest 75s",
+        "Machine Chest Press - 3 sets x 10 reps, rest 90s",
+        "Overhead Cable Triceps Extension - 3 sets x 12 reps, rest 60s",
+        "Rope Triceps Pressdown - 3 sets x 12 reps, rest 60s",
+      ],
+    },
+    {
+      day: 2,
+      workout: [
+        "Weighted Pull Up - 4 sets x 6 reps, rest 150s",
+        "Chest Supported Row - 4 sets x 8 reps, rest 120s",
+        "Neutral Grip Lat Pulldown - 3 sets x 10 reps, rest 90s",
+        "Single Arm Cable Row - 3 sets x 12 reps each side, rest 75s",
+        "Reverse Pec Deck - 3 sets x 15 reps, rest 60s",
+        "Incline Dumbbell Curl - 3 sets x 12 reps, rest 60s",
+        "Cable Bayes Curl - 3 sets x 12 reps each arm, rest 60s",
+      ],
+    },
+    {
+      day: 3,
+      workout: [
+        "High Bar Back Squat - 4 sets x 6 reps, rest 180s",
+        "Romanian Deadlift - 4 sets x 8 reps, rest 150s",
+        "Leg Press (Deep Range) - 3 sets x 12 reps, rest 120s",
+        "Seated Leg Curl - 3 sets x 12 reps, rest 90s",
+        "Leg Extension - 3 sets x 15 reps, rest 75s",
+        "Standing Calf Raise - 4 sets x 12 reps, rest 60s",
+        "Dumbbell Lateral Raise - 3 sets x 20 reps, rest 45s",
+      ],
+    },
+    {
+      day: 4,
+      workout: [
+        "Standing Overhead Press - 4 sets x 6 reps, rest 150s",
+        "Incline Barbell Press - 4 sets x 8 reps, rest 120s",
+        "Machine Chest Press - 3 sets x 10 reps, rest 90s",
+        "Cable Lateral Raise - 4 sets x 15 reps, rest 60s",
+        "Cable Rear Delt Fly - 3 sets x 15 reps, rest 60s",
+        "Weighted Dips - 3 sets x 8 reps, rest 90s",
+        "Rope Triceps Pressdown - 3 sets x 12 reps, rest 60s",
+        "Overhead Cable Triceps Extension - 3 sets x 12 reps, rest 60s",
+      ],
+    },
+    {
+      day: 5,
+      workout: [
+        "Neutral Grip Lat Pulldown - 4 sets x 8 reps, rest 120s",
+        "Barbell Row - 4 sets x 8 reps, rest 120s",
+        "Cable Pullover - 3 sets x 12 reps, rest 75s",
+        "Rear Delt Cable Fly - 3 sets x 15 reps, rest 60s",
+        "Hammer Curl - 3 sets x 10 reps, rest 60s",
+        "Preacher Curl - 3 sets x 12 reps, rest 60s",
+        "Cable Reverse Curl - 3 sets x 15 reps, rest 60s",
+      ],
+    },
+    {
+      day: 6,
+      workout: [
+        "Front Squat - 4 sets x 6 reps, rest 180s",
+        "Barbell Hip Thrust - 4 sets x 8 reps, rest 120s",
+        "Bulgarian Split Squat - 3 sets x 10 reps each leg, rest 90s",
+        "Leg Extension - 3 sets x 15 reps, rest 75s",
+        "Seated Calf Raise - 4 sets x 15 reps, rest 60s",
+        "Cable Lateral Raise - 3 sets x 20 reps, rest 45s",
+        "Core Finisher - 12 minutes (mountain climber, plank, hollow hold)",
+      ],
+    },
   ],
 };
 
@@ -226,7 +240,11 @@ const isInstalled = computed(
 );
 
 const canShowInstallHelp = computed(
-  () => import.meta.client && isIosSafari.value && !standaloneMode.value && !isInstalled.value,
+  () =>
+    import.meta.client &&
+    isIosSafari.value &&
+    !standaloneMode.value &&
+    !isInstalled.value,
 );
 
 const installApp = async () => {
@@ -249,7 +267,8 @@ const handleInstallClick = async () => {
 const hasPendingUpdate = computed(() => Boolean(unref(pwa?.needRefresh)));
 
 const showUpdateBanner = computed(
-  () => import.meta.client && hasPendingUpdate.value && !dismissUpdateBanner.value,
+  () =>
+    import.meta.client && hasPendingUpdate.value && !dismissUpdateBanner.value,
 );
 
 const dismissUpdate = () => {
@@ -413,9 +432,10 @@ const normalizeCycleState = () => {
   }
 
   if (state.completedDays.includes(state.currentDay)) {
-    const nextDay = Array.from({ length: DAYS_PER_CYCLE }, (_, index) => index + 1).find(
-      (day) => !state.completedDays.includes(day),
-    );
+    const nextDay = Array.from(
+      { length: DAYS_PER_CYCLE },
+      (_, index) => index + 1,
+    ).find((day) => !state.completedDays.includes(day));
     state.currentDay = nextDay || 1;
   }
 };
@@ -445,7 +465,10 @@ onMounted(() => {
   updateStandaloneMode();
   window.addEventListener("appinstalled", updateStandaloneMode);
   const ua = window.navigator.userAgent;
-  isIosSafari.value = /iPad|iPhone|iPod/.test(ua) && /Safari/.test(ua) && !/CriOS|FxiOS|EdgiOS/.test(ua);
+  isIosSafari.value =
+    /iPad|iPhone|iPod/.test(ua) &&
+    /Safari/.test(ua) &&
+    !/CriOS|FxiOS|EdgiOS/.test(ua);
 
   const raw = localStorage.getItem(STORE_KEY);
   if (!raw) {
