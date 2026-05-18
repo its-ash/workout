@@ -13,6 +13,7 @@ export default defineNuxtConfig({
         { name: 'apple-mobile-web-app-status-bar-style', content: 'black-translucent' },
       ],
       link: [
+        { rel: 'manifest', href: '/workout/manifest.webmanifest' },
         { rel: 'icon', type: 'image/svg+xml', href: 'icon.svg' },
         { rel: 'icon', type: 'image/svg+xml', sizes: '192x192', href: 'icon-192.svg' },
         { rel: 'icon', type: 'image/svg+xml', sizes: '512x512', href: 'icon-512.svg' },

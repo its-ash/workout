@@ -60,12 +60,12 @@
     </section>
 
     <section v-if="showInstallHelp" class="update-toast">
-      <p class="update-copy">Install on iPhone/iPad</p>
+      <p class="update-copy">Install App</p>
       <div
         class="workout-note"
         style="margin-top: 0; border-top: 0; padding-top: 0"
       >
-        Tap Share in Safari, then choose Add to Home Screen.
+        {{ installHelpText }}
       </div>
       <div class="update-actions">
         <button class="secondary" @click="showInstallHelp = false">
@@ -209,6 +209,17 @@ const standaloneMode = ref(false);
 const dismissUpdateBanner = ref(false);
 const showInstallHelp = ref(false);
 const isIosSafari = ref(false);
+const isChromiumDesktop = ref(false);
+
+const installHelpText = computed(() => {
+  if (isIosSafari.value) {
+    return "Tap Share in Safari, then choose Add to Home Screen.";
+  }
+  if (isChromiumDesktop.value) {
+    return "Open Chrome menu (top-right) and choose Install Workout...";
+  }
+  return "Use your browser menu and choose Install app or Add to Home screen.";
+});
 
 const updateStandaloneMode = () => {
   if (!import.meta.client) {
@@ -242,7 +253,7 @@ const isInstalled = computed(
 const canShowInstallHelp = computed(
   () =>
     import.meta.client &&
-    isIosSafari.value &&
+    (isIosSafari.value || isChromiumDesktop.value) &&
     !standaloneMode.value &&
     !isInstalled.value,
 );
@@ -469,6 +480,9 @@ onMounted(() => {
     /iPad|iPhone|iPod/.test(ua) &&
     /Safari/.test(ua) &&
     !/CriOS|FxiOS|EdgiOS/.test(ua);
+  isChromiumDesktop.value =
+    /Chrome|Chromium|Edg/.test(ua) &&
+    !/Android|iPhone|iPad|iPod/.test(ua);
 
   const raw = localStorage.getItem(STORE_KEY);
   if (!raw) {
