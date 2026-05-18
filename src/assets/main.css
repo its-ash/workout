@@ -162,6 +162,29 @@ h2 {
   box-shadow: 3px 3px 0 0 var(--fg);
 }
 
+.level-picker {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+}
+
+.level-picker span {
+  font-size: 0.7rem;
+}
+
+.level-select {
+  border: 2px solid var(--fg);
+  background: var(--white);
+  color: var(--fg);
+  border-radius: 9999px;
+  padding: 0.2rem 0.5rem;
+  font: inherit;
+  font-size: 0.78rem;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+}
+
 .workspace {
   display: grid;
   gap: 0.9rem;
@@ -361,6 +384,38 @@ select {
   pointer-events: auto;
 }
 
+.update-toast {
+  position: fixed;
+  left: 1rem;
+  right: 1rem;
+  bottom: 5rem;
+  z-index: 50;
+  background: var(--yellow);
+  color: var(--fg);
+  border: 2px solid var(--fg);
+  box-shadow: 4px 4px 0 0 var(--fg);
+  padding: 0.7rem;
+  display: grid;
+  gap: 0.55rem;
+}
+
+.update-copy {
+  margin: 0;
+  font-size: 0.86rem;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.08em;
+}
+
+.update-actions {
+  display: flex;
+  gap: 0.5rem;
+}
+
+.update-actions button {
+  flex: 1;
+}
+
 .day-card::-webkit-scrollbar {
   width: 10px;
 }
@@ -478,6 +533,16 @@ button:disabled {
     width: 320px;
   }
 
+  .update-toast {
+    left: auto;
+    right: 1.5rem;
+    bottom: 5.8rem;
+    width: 360px;
+    border-width: 4px;
+    box-shadow: 8px 8px 0 0 var(--fg);
+    padding: 0.9rem;
+  }
+
   button {
     border-width: 4px;
   }
@@ -507,7 +572,7 @@ button:disabled {
   }
 
   .brand-left h1 {
-    font-size: clamp(1.35rem, 8vw, 2.1rem);
+    font-size: clamp(1.35rem, 5vw, 2.1rem);
     line-height: 1;
   }
 
@@ -527,5 +592,9 @@ button:disabled {
   .install-top-right {
     top: 0.8rem;
     right: 0.8rem;
+  }
+
+  .update-toast {
+    bottom: 5.2rem;
   }
 }
