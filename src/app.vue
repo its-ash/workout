@@ -31,7 +31,7 @@
       </div>
     </section>
 
-    <div class="actions day-actions">
+    <div class="actions day-actions d-flex">
       <button
         v-if="canInstall"
         class="secondary"
@@ -39,7 +39,7 @@
       >
         Install App
       </button>
-      <button class="primary" :disabled="isDoneToday" @click="completeDay">
+      <button :style="{'width': canInstall ? 'auto' : '100%' }" class="primary" :disabled="isDoneToday" @click="completeDay">
         {{ isDoneToday ? "Completed" : "Complete Day" }}
       </button>
     </div>
